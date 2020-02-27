@@ -11,7 +11,7 @@
     "date_due_warn": "",
     "showCaseReference": false,
     "isSubform": false,
-    "notes": "amended form and pdf",
+    "notes": "added LinkedIn as an option and amended slightly the form",
     "initial_stage": "Stage 1",
     "initial_stage_id": "AF-Stage-222eed13-8208-4593-84df-4577b2b0882e",
     "prefix": "SM",
@@ -2275,6 +2275,10 @@
                       {
                         "label": "Instagram",
                         "value": "Instagram"
+                      },
+                      {
+                        "label": "LinkedIn",
+                        "value": "LinkedIn"
                       }
                     ],
                     "displayName": true,
@@ -2314,7 +2318,7 @@
                     "inputClass": "",
                     "width": "",
                     "buttonText": "Clear",
-                    "displayCondition": null,
+                    "displayCondition": "{AccountType} icontains 'Facebook' or {AccountType} icontains 'Twitter' or {AccountType} icontains 'Instagram'",
                     "readOnly": false,
                     "mandatory": false
                   },
@@ -2386,7 +2390,7 @@
                     "noRetryOnIntegrationFailure": false,
                     "preventRunningOnInitialisation": true,
                     "displayName": "",
-                    "displayCondition": "{AccountType} isnt ''",
+                    "displayCondition": "{AccountType} icontains 'Facebook' or {AccountType} icontains 'Twitter' or {AccountType} icontains 'Instagram'",
                     "readOnly": false,
                     "mandatory": false
                   },
@@ -2400,9 +2404,72 @@
                     },
                     {
                       "element": "select",
-                      "value": "isnt ''",
+                      "value": "icontains",
                       "type": [
                         "_select"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "Facebook",
+                      "type": [
+                        "list"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "or",
+                      "type": [
+                        "logicalOperators"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "AccountType",
+                      "type": [
+                        "fields"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "icontains",
+                      "type": [
+                        "_select"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "Twitter",
+                      "type": [
+                        "list"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "or",
+                      "type": [
+                        "logicalOperators"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "AccountType",
+                      "type": [
+                        "fields"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "icontains",
+                      "type": [
+                        "_select"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "Instagram",
+                      "type": [
+                        "list"
                       ]
                     }
                   ],
@@ -2418,26 +2485,10 @@
                     "width": "",
                     "showInSummary": false,
                     "content": "{#outputHTML}",
-                    "displayCondition": "{AccountType} isnt ''",
+                    "displayCondition": "{AccountType} icontains 'Facebook' or {AccountType} icontains 'Twitter' or {AccountType} icontains 'Instagram'",
                     "readOnly": false
                   },
-                  "id": "AF-Field-c6ed7f13-e2ea-4858-aa64-65c313ba6546",
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "AccountType",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "isnt ''",
-                      "type": [
-                        "_select"
-                      ]
-                    }
-                  ]
+                  "id": "AF-Field-c6ed7f13-e2ea-4858-aa64-65c313ba6546"
                 },
                 {
                   "type": "radio",
@@ -2478,29 +2529,13 @@
                     "styleAsButton": null,
                     "hideWhenBlank": null,
                     "hidden": null,
-                    "displayCondition": "{AccountType} isnt ''",
+                    "displayCondition": "{AccountType} icontains 'Facebook' or {AccountType} icontains 'Twitter' or {AccountType} icontains 'Instagram'",
                     "selectCondition": null,
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
                     "mandatoryMessage": "This information is required"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "AccountType",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "isnt ''",
-                      "type": [
-                        "_select"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-c476f143-e4ce-469f-a226-6ba4fe98f29f"
                 },
                 {
@@ -2541,87 +2576,6 @@
                   "id": "AF-Field-a5fba389-495e-4bd5-b21d-c64e539d2769"
                 },
                 {
-                  "type": "select",
-                  "props": {
-                    "minimumChoices": null,
-                    "maximumChoices": null,
-                    "minimumChoicesMessage": "Please select at least _min_value_ choices",
-                    "maximumChoicesMessage": "Please select no more than _max_value_ choices",
-                    "label": "Select the account to be created",
-                    "dataName": "selectAccount",
-                    "labelPosition": "alignLeft",
-                    "defaultType": "specific",
-                    "defaultValue": null,
-                    "defaultValueText": null,
-                    "listSource": "one-time-list",
-                    "helpText": "",
-                    "readOnly": false,
-                    "allowOther": false,
-                    "summaryField": false,
-                    "lookup": null,
-                    "lookupCondition": null,
-                    "lookupButton": null,
-                    "preventRunningOnInitialisation": null,
-                    "noResultsMessage": null,
-                    "tokenName": null,
-                    "listOfValues": [
-                      {
-                        "label": "Facebook",
-                        "value": "Facebook"
-                      },
-                      {
-                        "label": "Twitter",
-                        "value": "Twitter"
-                      },
-                      {
-                        "label": "Instagram",
-                        "value": "Instagram"
-                      }
-                    ],
-                    "displayName": true,
-                    "outerClass": null,
-                    "labelClass": null,
-                    "inputClass": null,
-                    "width": null,
-                    "selectLabel": "Select...",
-                    "allowMultiple": false,
-                    "enableFilter": false,
-                    "hideWhenBlank": null,
-                    "hidden": null,
-                    "disableEmptyValue": null,
-                    "displayCondition": "{onList} icontains 'no'",
-                    "selectCondition": "",
-                    "mandatoryCondition": "",
-                    "readonlyCondition": "",
-                    "mandatory": true,
-                    "mandatoryMessage": "This information is required"
-                  },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
-                  "id": "AF-Field-1177e0ad-4b58-4567-b5e8-9d0cdbcbf78e"
-                },
-                {
                   "type": "text",
                   "props": {
                     "label": "Specify the name of the account",
@@ -2643,7 +2597,7 @@
                     "inputMaskPlaceholder": null,
                     "lengthCount": null,
                     "hideWhenBlank": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -2657,7 +2611,57 @@
                     "validationMaskMessage": "Please input text of the format: _validation_mask_",
                     "validationConditionMessage": "This field is invalid"
                   },
-                  "conditionInputs": [],
+                  "conditionInputs": [
+                    {
+                      "element": "select",
+                      "value": "onList",
+                      "type": [
+                        "fields"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "icontains",
+                      "type": [
+                        "_select"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "no",
+                      "type": [
+                        "list"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "or",
+                      "type": [
+                        "logicalOperators"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "AccountType",
+                      "type": [
+                        "fields"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "icontains",
+                      "type": [
+                        "_select"
+                      ]
+                    },
+                    {
+                      "element": "select",
+                      "value": "LinkedIn",
+                      "type": [
+                        "list"
+                      ]
+                    }
+                  ],
                   "id": "AF-Field-bc4ccbe6-086e-4c2a-af6c-b7ec870fe3a4"
                 },
                 {
@@ -2678,7 +2682,7 @@
                     "width": null,
                     "lengthCount": null,
                     "hideWhenBlank": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -2690,29 +2694,6 @@
                     "maximumLengthMessage": "Please input no more than _max_value_ characters",
                     "validationMaskMessage": "Please input text of the format: _validation_mask_"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-e0bbe59c-8d8a-483a-9d4c-504efdd9dc70"
                 },
                 {
@@ -2733,7 +2714,7 @@
                     "width": null,
                     "lengthCount": null,
                     "hideWhenBlank": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -2745,29 +2726,6 @@
                     "maximumLengthMessage": "Please input no more than _max_value_ characters",
                     "validationMaskMessage": "Please input text of the format: _validation_mask_"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-86fd6dd9-59c2-4d18-b041-ae7c061b4a14"
                 },
                 {
@@ -2788,7 +2746,7 @@
                     "width": null,
                     "lengthCount": null,
                     "hideWhenBlank": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -2800,29 +2758,6 @@
                     "maximumLengthMessage": "Please input no more than _max_value_ characters",
                     "validationMaskMessage": "Please input text of the format: _validation_mask_"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-bb04377b-5873-432b-844b-e118e27d754f"
                 },
                 {
@@ -2847,7 +2782,7 @@
                     "inputMaskPlaceholder": null,
                     "lengthCount": null,
                     "hideWhenBlank": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -2861,29 +2796,6 @@
                     "validationMaskMessage": "Please input text of the format: _validation_mask_",
                     "validationConditionMessage": "This field is invalid"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-a843cb48-8319-4824-9029-f56c20cfea23"
                 },
                 {
@@ -2904,7 +2816,7 @@
                     "width": null,
                     "lengthCount": null,
                     "hideWhenBlank": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -2916,29 +2828,6 @@
                     "maximumLengthMessage": "Please input no more than _max_value_ characters",
                     "validationMaskMessage": "Please input text of the format: _validation_mask_"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-f60abc1b-3582-4a0a-82e6-a687c8aa98ec"
                 },
                 {
@@ -2960,7 +2849,7 @@
                     "width": null,
                     "hideWhenBlank": null,
                     "displayAsSeparated": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -2972,29 +2861,6 @@
                     "dateFormatMessage": "Please input a date in the format _date_format_",
                     "dateFormat": ""
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-334ff621-5436-47fc-8873-a3fe30300afc"
                 },
                 {
@@ -3036,36 +2902,13 @@
                     "styleAsButton": null,
                     "hideWhenBlank": null,
                     "hidden": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "selectCondition": null,
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
                     "mandatoryMessage": "This information is required"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-8b74400e-3778-4ad5-abdc-e6fd4d7bf6d0"
                 },
                 {
@@ -3078,31 +2921,8 @@
                     "width": "",
                     "showInSummary": false,
                     "content": "<p><strong>You will need to provide the names of at least two members of staff who will be updating the page</strong></p>",
-                    "displayCondition": "{willYou} icontains 'no'"
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'"
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "willYou",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-a659f6a6-4f87-4ff7-8ef2-e69e6f7e5505"
                 },
                 {
@@ -3449,7 +3269,7 @@
                     "buttonText": "upload",
                     "launchCamera": true,
                     "hideWhenBlank": null,
-                    "displayCondition": "{onList} icontains 'no'",
+                    "displayCondition": "{onList} icontains 'no' or {AccountType} icontains 'LinkedIn'",
                     "mandatoryCondition": null,
                     "readonlyCondition": null,
                     "mandatory": true,
@@ -3463,29 +3283,6 @@
                     "maximumFileSizeMessage": "_file_name_ is _file_size_ and too large. Please upload files less than _max_size_.",
                     "maximumNumberOfFilesMessage": "You can upload a maximum of _max_files_ files."
                   },
-                  "conditionInputs": [
-                    {
-                      "element": "select",
-                      "value": "onList",
-                      "type": [
-                        "fields"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "icontains",
-                      "type": [
-                        "_select"
-                      ]
-                    },
-                    {
-                      "element": "select",
-                      "value": "no",
-                      "type": [
-                        "list"
-                      ]
-                    }
-                  ],
                   "id": "AF-Field-a79ea83f-a2d3-498b-b38d-39034e7cd785"
                 }
               ]
@@ -3521,7 +3318,7 @@
           "populated": true
         },
         {
-          "label": "Is the account on the list already? ",
+          "label": "Please look at the list of existing pages below. Is the page you are proposing similar to one that already exists? ",
           "dataName": "onList",
           "populated": true
         },
@@ -3536,13 +3333,28 @@
           "populated": true
         },
         {
-          "label": "What is the purpose of the proposed page? Please list business requirements and target audience",
-          "dataName": "requirements",
+          "label": "What are your objectives?",
+          "dataName": "objectives",
+          "populated": true
+        },
+        {
+          "label": "How will you measure whether you've achieved your objective?",
+          "dataName": "howMeasure",
+          "populated": true
+        },
+        {
+          "label": "Who is your target audience?",
+          "dataName": "target",
           "populated": true
         },
         {
           "label": "How often will it be updated?",
           "dataName": "howOften",
+          "populated": true
+        },
+        {
+          "label": "Why have you chosen this particular platform?",
+          "dataName": "why",
           "populated": true
         },
         {
@@ -3558,6 +3370,11 @@
         {
           "label": "Member of staff who will be updating the page",
           "dataName": "owner",
+          "populated": true
+        },
+        {
+          "label": "Please attach a rough content calendar",
+          "dataName": "calendar",
           "populated": true
         }
       ]
